@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join as Builder - BentiBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+            <div class="brand-copy">
+                <span class="brand-name">BentiBuild</span>
+            </div>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Open navigation menu</span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <main>
+        <section class="application-form">
+            <h1>Join as a Builder</h1>
+            <p>Apply to become a certified BentiBuild builder. Fill out the form below and our team will review your application.</p>
+            <div id="message"></div>
+            <form id="builderApplicationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Experience:</label>
+                    <textarea id="experience" name="experience" rows="4" required placeholder="Describe your building experience, skills, and why you want to join BentiBuild"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telephone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="cta-button">Submit Application</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+    </footer>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('builderApplicationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('message');
+
+            try {
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    location: document.getElementById('location').value,
+                    experience: document.getElementById('experience').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    status: 'pending',
+                    submittedAt: new Date().toISOString()
+                };
+
+                // Wait for DB to initialize
+                if (!localDB || !localDB.db) {
+                    messageDiv.className = 'error';
+                    messageDiv.textContent = 'Initializing... please try again.';
+                    return;
+                }
+
+                // Save to local database
+                await localDB.put('builderApplications', formData);
+
+                messageDiv.className = 'success';
+                messageDiv.textContent = 'Application submitted successfully! Your application has been saved locally.';
+                e.target.reset();
+
+                // Clear message after 5 seconds
+                setTimeout(() => {
+                    messageDiv.textContent = '';
+                }, 5000);
+            } catch (error) {
+                messageDiv.className = 'error';
+                messageDiv.textContent = 'Error submitting application: ' + error.message;
+                console.error('Application error:', error);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

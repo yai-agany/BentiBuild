@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottle Map - BentiBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+            <div class="brand-copy">
+                <span class="brand-name">BentiBuild</span>
+            </div>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Open navigation menu</span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <div class="language-toggle">
+        <span class="active">English</span> | <a href="#">العربية</a>
+    </div>
+    <main>
+        <section class="map-intro">
+            <h1>Bottle Collection Map</h1>
+            <p>Find collection points and drop-off locations for plastic bottles in Juba.</p>
+        </section>
+        <section class="map-container">
+            <h2>Juba Collection Points</h2>
+            <ul class="location-list">
+                <li>Gudele</li>
+                <li>Munuki</li>
+                <li>Kator</li>
+                <li>Sherikat</li>
+            </ul>
+            <div class="map-embed-wrap">
+                <iframe
+                    title="Juba bottle collection map"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=31.5835%2C4.8031%2C31.6335%2C4.8431&layer=mapnik"
+                    style="border:1px solid #888;"
+                    width="100%"
+                    height="420"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <p class="map-note">Markers in this area represent BentiBuild collection hubs at Gudele, Munuki, Kator, and Sherikat.</p>
+        </section>
+        <section class="collection-table">
+            <h2>Collection Points Table</h2>
+            <table>
+                <thead>
+                    <tr><th>Location</th><th>Bottles Needed</th><th>Contact</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Kator Market</td><td>5,000</td><td>John (077XXXXXXX)</td><td>Urgent</td></tr>
+                    <tr><td>Munuki Restaurant Zone</td><td>10,000</td><td>Mary (088XXXXXXX)</td><td>Collecting</td></tr>
+                    <tr><td>Gudele Community Center</td><td>3,000</td><td>Peter (092XXXXXXX)</td><td>Low</td></tr>
+                    <tr><td>Sherikat Hub</td><td>4,500</td><td>Amina (093XXXXXXX)</td><td>Collecting</td></tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="add-listing">
+            <h2>Add Collection Listing</h2>
+            <form action="#" method="post" class="auth-form">
+                <div class="form-group">
+                    <label for="list-name">Name</label>
+                    <input id="list-name" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="list-location">Location</label>
+                    <input id="list-location" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="list-phone">Phone</label>
+                    <input id="list-phone" type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label for="list-qty">Bottle Quantity</label>
+                    <input id="list-qty" type="number" min="1" required>
+                </div>
+                <button type="submit" class="cta-button">Add Listing</button>
+            </form>
+        </section>
+        <section class="collection-tips">
+            <h2>Collection Tips</h2>
+            <ul>
+                <li>Clean bottles only, please</li>
+                <li>Remove caps before filling with sand</li>
+                <li>1.5L bottles work best for walls</li>
+            </ul>
+        </section>
+        <section class="collection-info">
+            <h2>How to Contribute</h2>
+            <p>Bring clean, dry plastic bottles to any of our collection points. We accept 600L and 1.5L bottles.</p>
+            <a href="contact.html" class="cta-button">Contact for Pickup</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="tel:+211924313974" class="contact-button">Call Us</a>
+            <a href="https://wa.me/211924313974" class="contact-button whatsapp">WhatsApp</a>
+            <a href="https://www.facebook.com/yaiagany" class="contact-button social facebook" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://x.com/yucci211" class="contact-button social x" target="_blank" rel="noopener">X</a>
+            <a href="https://www.instagram.com/yucci211" class="contact-button social instagram" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@yucci211" class="contact-button social tiktok" target="_blank" rel="noopener">TikTok</a>
+        </div>
+    </footer>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

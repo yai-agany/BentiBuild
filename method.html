@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Method - BentiBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+            <div class="brand-copy">
+                <span class="brand-name">BentiBuild</span>
+            </div>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Open navigation menu</span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <div class="language-toggle">
+        <span class="active">English</span> | <a href="#">العربية</a>
+    </div>
+    <main>
+        <section class="method-intro">
+            <h1>The BentiBuild Method</h1>
+            <p>Learn how we transform plastic bottles into sturdy homes using simple, community-based techniques.</p>
+        </section>
+        <section class="steps">
+            <h2>Construction Steps</h2>
+            <div class="step">
+                <h3>1. Bottle Collection</h3>
+                <p>Community members collect and clean plastic bottles from local sources.</p>
+                <img src="images/plastic botles collection3.png" alt="Bottle collection" class="placeholder-image">
+            </div>
+            <div class="step">
+                <h3>2. Bottle Preparation</h3>
+                <p>Bottles are filled with sand or soil and sealed to create building blocks.</p>
+                <img src="images/plastic botles collection4.png" alt="Bottle preparation" class="placeholder-image">
+            </div>
+            <div class="step">
+                <h3>3. Wall Construction</h3>
+                <p>Bottles are arranged in rows and secured with wire or mud to form walls.</p>
+                <img src="images/plastic botles collection5.png" alt="Wall construction" class="placeholder-image">
+            </div>
+            <div class="step">
+                <h3>4. Roofing and Finishing</h3>
+                <p>Add roofing materials and plaster the walls for a finished home.</p>
+                <img src="images/plastic botles collection6.png" alt="Roofing and finishing" class="placeholder-image">
+            </div>
+        </section>
+        <section class="video-tutorials">
+            <h2>Video Tutorials</h2>
+            <div class="video-grid">
+                <div class="video-placeholder">Watch: How to fill bottles properly</div>
+                <div class="video-placeholder">Watch: Mixing mortar for bottle walls</div>
+            </div>
+        </section>
+        <section class="download-guide">
+            <h2>Downloadable Guide</h2>
+            <p><a href="#" class="cta-button">Download PDF instructions</a></p>
+        </section>
+        <section class="calculator">
+            <h2>Material Calculator</h2>
+            <p>Estimate the number of bottles needed for your project.</p>
+            <form id="calc-form">
+                <label for="length">Room Length (meters):</label>
+                <input type="number" id="length" min="1" value="5">
+                <label for="width">Room Width (meters):</label>
+                <input type="number" id="width" min="1" value="4">
+                <label for="height">Wall Height (meters):</label>
+                <input type="number" id="height" min="1" value="2.5">
+                <button type="button" onclick="calculateBottles()">Calculate</button>
+            </form>
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Quantity Needed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plastic Bottles (1.5L)</td>
+                        <td id="bottles">0</td>
+                    </tr>
+                    <tr>
+                        <td>Sand/Soil (kg)</td>
+                        <td id="sand">0</td>
+                    </tr>
+                    <tr>
+                        <td>Wire (meters)</td>
+                        <td id="wire">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="tel:+211924313974" class="contact-button">Call Us</a>
+            <a href="https://wa.me/211924313974" class="contact-button whatsapp">WhatsApp</a>
+            <a href="https://www.facebook.com/yaiagany" class="contact-button social facebook" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://x.com/yucci211" class="contact-button social x" target="_blank" rel="noopener">X</a>
+            <a href="https://www.instagram.com/yucci211" class="contact-button social instagram" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@yucci211" class="contact-button social tiktok" target="_blank" rel="noopener">TikTok</a>
+        </div>
+    </footer>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

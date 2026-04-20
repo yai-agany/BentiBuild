@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - BentiBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+            <div class="brand-copy">
+                <span class="brand-name">BentiBuild</span>
+            </div>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Open navigation menu</span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <main>
+        <section class="contact-intro">
+            <h1>Contact Us</h1>
+            <p>Get in touch to learn more about BentiBuild or join our community.</p>
+        </section>
+        <section class="contact-info">
+            <div class="contact-details">
+                <h2>Reach Out</h2>
+                <p><strong>Phone:</strong> +211924313974</p>
+                <p><strong>Email:</strong> info@bentibuild.org</p>
+                <p><strong>Address:</strong> Juba, South Sudan</p>
+                <div class="map-embed-wrap" style="margin-top:15px;">
+                    <iframe title="Juba location" src="https://www.openstreetmap.org/export/embed.html?bbox=31.5835%2C4.8031%2C31.6335%2C4.8431&layer=mapnik" width="100%" height="250" style="border:1px solid #888;" loading="lazy"></iframe>
+                </div>
+                <div class="contact-buttons">
+                    <a href="tel:+211924313974" class="contact-button large">Call Us Now</a>
+                    <a href="https://wa.me/211924313974" class="contact-button whatsapp large">Message on WhatsApp</a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form action="#" method="post" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location in Juba:</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">I am interested in:</label>
+                        <select id="interest" name="interest" required>
+                            <option value="building">Building a home</option>
+                            <option value="builder">Becoming a builder</option>
+                            <option value="supplier">Supplying bottles</option>
+                            <option value="partnership">Partnership</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+                <div class="contact-more">
+                    <h3>Stay Updated</h3>
+                    <p>Get bottle housing updates</p>
+                    <form action="#" method="post" class="waitlist-form">
+                        <input type="email" name="newsletter" placeholder="Email" required>
+                        <button type="submit" class="cta-button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="tel:+211924313974" class="contact-button">Call Us</a>
+            <a href="https://wa.me/211924313974" class="contact-button whatsapp">WhatsApp</a>
+            <a href="https://www.facebook.com/yaiagany" class="contact-button social facebook" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://x.com/yucci211" class="contact-button social x" target="_blank" rel="noopener">X</a>
+            <a href="https://www.instagram.com/yucci211" class="contact-button social instagram" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@yucci211" class="contact-button social tiktok" target="_blank" rel="noopener">TikTok</a>
+        </div>
+    </footer>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            try {
+                // Wait for DB to initialize
+                if (!localDB || !localDB.db) {
+                    alert('Initializing database... please try again.');
+                    return;
+                }
+
+                const contactData = {
+                    name: document.getElementById('name').value,
+                    location: document.getElementById('location').value,
+                    interest: document.getElementById('interest').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value,
+                    receivedAt: new Date().toISOString()
+                };
+
+                // Save to local database
+                await localDB.put('contactMessages', contactData);
+
+                // Show success message
+                const messageDiv = document.createElement('div');
+                messageDiv.id = 'contact-message';
+                messageDiv.className = 'success';
+                messageDiv.textContent = 'Message saved successfully! Your message has been stored locally.';
+
+                e.target.parentNode.insertBefore(messageDiv, e.target.nextSibling);
+                e.target.reset();
+
+                // Auto-remove message after 5 seconds
+                setTimeout(() => {
+                    const existing = document.getElementById('contact-message');
+                    if (existing) existing.remove();
+                }, 5000);
+            } catch (error) {
+                const messageDiv = document.createElement('div');
+                messageDiv.id = 'contact-message';
+                messageDiv.className = 'error';
+                messageDiv.textContent = 'Error saving message: ' + error.message;
+
+                const existing = document.getElementById('contact-message');
+                if (existing) existing.remove();
+                e.target.parentNode.insertBefore(messageDiv, e.target.nextSibling);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

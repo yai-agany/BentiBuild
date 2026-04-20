@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Builders - BentiBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+            <div class="brand-copy">
+                <span class="brand-name">BentiBuild</span>
+            </div>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Open navigation menu</span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <main>
+        <section class="directory-intro">
+            <h1>Builders Directory</h1>
+            <p>Find a builder in your neighborhood and learn practical tips from local experts.</p>
+        </section>
+        <section class="builders-grid" id="buildersGrid">
+            <!-- Builders will be loaded here -->
+        </section>
+        <section class="become-builder">
+            <h2>Want to learn bottle construction?</h2>
+            <p>Apply for training and join our network of certified BentiBuild builders.</p>
+            <a href="contact.html" class="cta-button">Apply for Training</a>
+        </section>
+        <section class="builder-tips">
+            <h2>Builder Tips Forum</h2>
+            <ul>
+                <li>Tip 1: "Always sieve sand to remove stones"</li>
+                <li>Tip 2: "Use level between rows"</li>
+                <li>Tip 3: "Start with small structures first"</li>
+            </ul>
+        </section>
+    <footer>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="tel:+211924313974" class="contact-button">Call Us</a>
+            <a href="https://wa.me/211924313974" class="contact-button whatsapp">WhatsApp</a>
+            <a href="https://www.facebook.com/yaiagany" class="contact-button social facebook" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://x.com/yucci211" class="contact-button social x" target="_blank" rel="noopener">X</a>
+            <a href="https://www.instagram.com/yucci211" class="contact-button social instagram" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@yucci211" class="contact-button social tiktok" target="_blank" rel="noopener">TikTok</a>
+        </div>
+    </footer>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        async function loadBuilders() {
+            try {
+                // Wait for DB to initialize
+                if (!localDB || !localDB.db) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
+                const allUsers = await localDB.getAll('users');
+                const builders = allUsers.filter(u => u.role === 'builder');
+                
+                const grid = document.getElementById('buildersGrid');
+                
+                if (builders.length === 0) {
+                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #999;">No builders registered yet. Check back soon!</p>';
+                    return;
+                }
+
+                grid.innerHTML = builders.map(builder => `
+                    <div class="builder-card">
+                        <h3>${builder.name}</h3>
+                        <p><strong>Phone:</strong> <a href="tel:${builder.phone}">${builder.phone}</a></p>
+                        <p><strong>Email:</strong> ${builder.email}</p>
+                        <div style="margin-top: 1rem;">
+                            <a href="tel:${builder.phone}" class="contact-button">Call</a>
+                            <a href="https://wa.me/${builder.phone.replace('+', '')}" class="contact-button whatsapp">WhatsApp</a>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading builders:', error);
+                const grid = document.getElementById('buildersGrid');
+                grid.innerHTML = '<p style="color: red;">Error loading builders. Please refresh the page.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBuilders();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

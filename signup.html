@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BentiBuild</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+            <div class="brand-copy">
+                <span class="brand-name">BentiBuild</span>
+            </div>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="sr-only">Open navigation menu</span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <main>
+        <section class="form-container">
+            <h1>Sign Up for BentiBuild</h1>
+            <p>Join as a collector, builder, or bottle supplier.</p>
+            <div id="signup-message"></div>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-email">Email address</label>
+                    <input type="email" id="signup-email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-phone">Phone Number</label>
+                    <input type="tel" id="signup-phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-role">Role</label>
+                    <select id="signup-role" name="role" required>
+                        <option value="collector">Collector</option>
+                        <option value="builder">Builder</option>
+                        <option value="supplier">Bottle Supplier</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" required>
+                </div>
+
+                <button type="submit" class="cta-button">Create Account</button>
+            </form>
+            <p class="small-text">Already have an account? <a href="login.html">Login here</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="tel:+211924313974" class="contact-button">Call Us</a>
+            <a href="https://wa.me/211924313974" class="contact-button whatsapp">WhatsApp</a>
+            <a href="https://www.facebook.com/yaiagany" class="contact-button social facebook" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://x.com/yucci211" class="contact-button social x" target="_blank" rel="noopener">X</a>
+            <a href="https://www.instagram.com/yucci211" class="contact-button social instagram" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@yucci211" class="contact-button social tiktok" target="_blank" rel="noopener">TikTok</a>
+        </div>
+    </footer>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const phone = document.getElementById('signup-phone').value;
+            const password = document.getElementById('signup-password').value;
+            const role = document.getElementById('signup-role').value;
+
+            const messageDiv = document.getElementById('signup-message');
+
+            try {
+                const result = await authManager.signup(name, email, phone, password, role);
+
+                if (result.success) {
+                    messageDiv.className = 'success';
+                    messageDiv.textContent = 'Signup successful! Redirecting...';
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else {
+                    messageDiv.className = 'error';
+                    messageDiv.textContent = result.message;
+                }
+            } catch (error) {
+                messageDiv.className = 'error';
+                messageDiv.textContent = 'Error creating account. Please try again.';
+                console.error('Signup error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
+      window.location.href = 'index.html';
+    } else {
+      messageDiv.className = 'error';
+      messageDiv.textContent = result.error || 'Signup failed';
+    }
+    // Remove any existing message
+    const existingMessage = document.getElementById('signup-message');
+    if (existingMessage) existingMessage.remove();
+    // Add new message after form
+    const form = document.querySelector('.auth-form');
+    form.parentNode.insertBefore(messageDiv, form.nextSibling);
+  } catch (err) {
+    const messageDiv = document.createElement('div');
+    messageDiv.id = 'signup-message';
+    messageDiv.className = 'error';
+    messageDiv.textContent = 'Connection error: ' + err.message;
+    const existingMessage = document.getElementById('signup-message');
+    if (existingMessage) existingMessage.remove();
+    const form = document.querySelector('.auth-form');
+    form.parentNode.insertBefore(messageDiv, form.nextSibling);
+  }
+}
+</script>
+    <script src="script.js"></script>
+</body>
+</html>
