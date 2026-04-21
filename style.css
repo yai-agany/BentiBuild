@@ -106,7 +106,7 @@ section {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 1rem 1.5rem;
-    padding-right: 5.5rem;
+    padding-right: 7.5rem;
 }
 
 .brand {
@@ -147,6 +147,46 @@ section {
     background: #ffffff;
     box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
     border: 1px solid rgba(44, 62, 80, 0.08);
+}
+
+.auth-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(44, 62, 80, 0.08);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    transition: all 0.25s ease;
+}
+
+.auth-icon:hover {
+    background: #f0f7ff;
+    border-color: rgba(46, 204, 113, 0.3);
+    box-shadow: 0 12px 32px rgba(46, 204, 113, 0.12);
+    transform: translateY(-2px);
+}
+
+body.dark .auth-icon {
+    background: var(--surface);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.dark .auth-icon:hover {
+    background: rgba(46, 204, 113, 0.15);
+    border-color: rgba(46, 204, 113, 0.4);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.15);
 }
 
 .theme-toggle {
@@ -204,6 +244,28 @@ body.dark .nav-links a {
 body.dark .nav-links a:hover,
 body.dark .nav-links a:focus {
     background: rgba(46, 204, 113, 0.12);
+}
+
+body.dark .overview-card {
+    background: var(--surface-soft);
+    border-color: rgba(46, 204, 113, 0.15);
+}
+
+body.dark .overview-card:hover {
+    border-color: rgba(46, 204, 113, 0.3);
+    box-shadow: 0 12px 32px rgba(46, 204, 113, 0.15);
+}
+
+body.dark .overview-card h3 {
+    color: #7dd7a4;
+}
+
+body.dark .overview-card p {
+    color: #b8c4d2;
+}
+
+body.dark .card-image {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.12) 0%, rgba(30, 132, 73, 0.12) 100%);
 }
 
 body.dark .hero {
@@ -581,31 +643,65 @@ body.dark a:focus {
 
 .overview-grid {
     display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .overview-card {
     background: var(--surface);
     border: 1px solid rgba(44, 62, 80, 0.08);
-    border-radius: 24px;
-    padding: 1.75rem;
-    box-shadow: var(--shadow);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 0.35s ease;
+}
+
+.overview-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    transform: translateY(-4px);
+    border-color: rgba(46, 204, 113, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.08) 0%, rgba(30, 132, 73, 0.08) 100%);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.overview-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.75rem;
 }
 
 .overview-card h3 {
     margin-top: 0;
     margin-bottom: 0.9rem;
     color: var(--primary-dark);
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
 }
 
 .overview-card p {
     color: var(--muted);
     line-height: 1.8;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
 }
 
 .overview-card .cta-button {
