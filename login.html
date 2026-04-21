@@ -56,7 +56,16 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
+        <nav class="footer-nav">
+            <ul class="footer-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="method.html">The Method</a></li>
+                <li><a href="map.html">Bottle Map</a></li>
+                <li><a href="builders.html">Builders</a></li>
+                <li><a href="sales.html">Bottle Sales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
         <div class="contact-links">
             <a href="tel:+211924313974" class="contact-button">Call Us</a>
             <a href="https://wa.me/211924313974" class="contact-button whatsapp">WhatsApp</a>
@@ -65,10 +74,31 @@
             <a href="https://www.instagram.com/yucci211" class="contact-button social instagram" target="_blank" rel="noopener">Instagram</a>
             <a href="https://www.tiktok.com/@yucci211" class="contact-button social tiktok" target="_blank" rel="noopener">TikTok</a>
         </div>
+        <p>&copy; 2026 BentiBuild. All rights reserved.</p>
     </footer>
     <script src="db.js"></script>
     <script src="auth.js"></script>
     <script>
+        // Navigation toggle for mobile
+        const navToggle = document.querySelector('.nav-toggle');
+        const primaryNav = document.getElementById('primary-navigation');
+
+        if (navToggle && primaryNav) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = primaryNav.classList.contains('open');
+                navToggle.setAttribute('aria-expanded', !isOpen);
+                primaryNav.classList.toggle('open');
+            });
+
+            // Close nav when clicking outside or on a link
+            document.addEventListener('click', (e) => {
+                if (!navToggle.contains(e.target) && !primaryNav.contains(e.target)) {
+                    primaryNav.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
