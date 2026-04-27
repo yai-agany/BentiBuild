@@ -1,218 +1,182 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="pwa-theme-color" content="#2ecc71">
     <meta name="description" content="Building sustainable homes from plastic bottles in Juba, South Sudan">
-    <meta name="theme-color" content="#2ecc71">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>BentiBuild - Plastic Bottle Housing Initiative</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="images/BentiBuild logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="brand">
-            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
-            <div class="brand-copy">
-                <span class="brand-name">BentiBuild</span>
-            </div>
-        </a>
-        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
-            <span class="sr-only">Open navigation menu</span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="method.html">The Method</a></li>
-                <li><a href="map.html">Bottle Map</a></li>
-                <li><a href="builders.html">Builders</a></li>
-                <li><a href="sales.html">Bottle Sales</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-        <div class="auth-icons">
-            <a href="login.html" class="auth-icon" title="Log In" aria-label="Log In">
-                <span>👤</span>
-            </a>
-            <a href="signup.html" class="auth-icon" title="Sign Up" aria-label="Sign Up">
-                <span>✏️</span>
-            </a>
-        </div>
-    </div>
-</header>
-    <main>
-                        <section class="hero">
-            <div class="hero-panel">
-                <div class="hero-copy">
-                    <div class="hero-kicker">Plastic Bottle Housing Initiative</div>
-                    <h1>Building Homes from Plastic Bottles in Juba</h1>
-                    <p>Join our community initiative to create sustainable housing using recycled plastic bottles.</p>
-                    <p class="hero-subtitle">Turning Juba's plastic waste into strong, affordable homes — build sustainably and live affordably.</p>
-                    <div class="hero-actions">
-                        <a href="method.html" class="cta-button">Learn the Method</a>
-                        <a href="map.html" class="cta-button secondary">Find Bottles</a>
-                        <a href="join-builder.html" class="cta-button secondary">Join as Builder</a>
-                    </div>
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
+                <div class="brand-copy">
+                    <span class="brand-name">BentiBuild</span>
                 </div>
-                <aside class="hero-card">
-                    <h2>About BentiBuild</h2>
-                    <p>BentiBuild is a community-driven project in Juba, South Sudan, promoting eco-friendly housing solutions through plastic bottle construction. We collect, clean, and use plastic bottles to build affordable homes that are earthquake-resistant and sustainable.</p>
-                    <div class="hero-meta">
-                        <span class="hero-label">Sustainable</span>
-                        <span class="hero-label">Affordable</span>
-                        <span class="hero-label">Community-led</span>
-                    </div>
-                </aside>
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="sr-only">Open navigation menu</span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="method.html">The Method</a></li>
+                    <li><a href="map.html">Bottle Map</a></li>
+                    <li><a href="builders.html">Builders</a></li>
+                    <li><a href="sales.html">Bottle Sales</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="auth-toggle" class="auth-icon" aria-haspopup="dialog" aria-controls="auth-modal" title="Log in / Sign up">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="currentColor" />
+                        <path d="M4 20c0-3.313 4.03-6 8-6s8 2.687 8 6v1H4v-1z" fill="currentColor" />
+                    </svg>
+                    <span class="auth-label">Account</span>
+                </button>
             </div>
-            <div class="language-toggle">
-                <span class="active">English</span> | <a href="#">العربية</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <h1>BentiBuild</h1>
+                <p>Building sustainable homes from plastic bottles in Juba.</p>
+                <a href="#overview" class="cta-button">Explore</a>
             </div>
         </section>
-        <section class="homepage-overview">
+
+        <section id="overview" class="homepage-overview">
             <h2>Explore BentiBuild</h2>
             <div class="overview-grid">
                 <article class="overview-card">
-                    <div class="card-image">
-                        <img src="images/method.png" alt="The Method">
-                    </div>
+                    <div class="card-image"><img src="images/method.png" alt="Method"></div>
                     <div class="card-content">
-                        <h3>The Method</h3>
-                        <p>Learn how bottles become strong, insulated walls through a simple, community-based building process.</p>
-                        <a href="method.html" class="cta-button secondary">Read the Method</a>
+                        <h3>Method</h3>
+                        <p>Discover our process for building better bottles.</p>
+                        <a class="btn" href="method.html">Learn more</a>
                     </div>
                 </article>
                 <article class="overview-card">
-                    <div class="card-image">
-                        <img src="images/the bottle map.png" alt="Bottle Map">
-                    </div>
+                    <div class="card-image"><img src="images/the bottle map.png" alt="Map"></div>
                     <div class="card-content">
-                        <h3>Bottle Map</h3>
-                        <p>Find collection points, drop-off sites, and local partners across Juba with our interactive bottle map.</p>
-                        <a href="map.html" class="cta-button secondary">View the Map</a>
+                        <h3>Map</h3>
+                        <p>Find bottle collection points and builder locations.</p>
+                        <a class="btn" href="map.html">Open map</a>
                     </div>
                 </article>
                 <article class="overview-card">
-                    <div class="card-image">
-                        <img src="images/builder.png" alt="Builders">
-                    </div>
+                    <div class="card-image"><img src="images/builder.png" alt="Builders"></div>
                     <div class="card-content">
                         <h3>Builders</h3>
-                        <p>Meet the local builders using recycled bottles to create affordable, resilient homes for families.</p>
-                        <a href="builders.html" class="cta-button secondary">Meet the Builders</a>
+                        <p>Meet our network of local builders.</p>
+                        <a class="btn" href="builders.html">See builders</a>
                     </div>
                 </article>
                 <article class="overview-card">
-                    <div class="card-image">
-                        <img src="images/bottle sales.png" alt="Bottle Sales">
-                    </div>
+                    <div class="card-image"><img src="images/bottle sales.png" alt="Sales"></div>
                     <div class="card-content">
-                        <h3>Bottle Sales</h3>
-                        <p>Buy clean, sorted bottles for recycling and construction — support our mission while supplying your project.</p>
-                        <a href="sales.html" class="cta-button secondary">See Sales Options</a>
+                        <h3>Sales</h3>
+                        <p>Shop bottle products and support builders.</p>
+                        <a class="btn" href="sales.html">Shop now</a>
                     </div>
                 </article>
                 <article class="overview-card">
-                    <div class="card-image">
-                        <img src="images/become a builder.png" alt="Join a Builder">
-                    </div>
+                    <div class="card-image"><img src="images/become a builder.png" alt="Become a builder"></div>
                     <div class="card-content">
-                        <h3>Join a Builder</h3>
-                        <p>Apply to become a certified BentiBuild builder and help scale sustainable housing across the region.</p>
-                        <a href="join-builder.html" class="cta-button secondary">Apply Now</a>
+                        <h3>Become a builder</h3>
+                        <p>Join our community and start building.</p>
+                        <a class="btn" href="join-builder.html">Get started</a>
                     </div>
                 </article>
                 <article class="overview-card">
-                    <div class="card-image">
-                        <img src="images/builder directory.png" alt="Builder Directory">
-                    </div>
+                    <div class="card-image"><img src="images/builder directory.png" alt="Directory"></div>
                     <div class="card-content">
-                        <h3>Builder Directory</h3>
-                        <p>Connect with experienced teams and find the right builder for your plastic bottle home project.</p>
-                        <a href="directory.html" class="cta-button secondary">Browse Directory</a>
+                        <h3>Directory</h3>
+                        <p>Search the builder directory and resources.</p>
+                        <a class="btn" href="directory.html">Browse</a>
                     </div>
                 </article>
             </div>
         </section>
+
         <section class="stats-grid">
             <div class="stat-item">
-                <div class="stat-icon">&#x1F3E0;</div>
+                <div class="stat-icon">🏠</div>
                 <div>
                     <strong class="stat-number">0</strong>
                     <small>Homes built</small>
                 </div>
             </div>
             <div class="stat-item">
-                <div class="stat-icon">&#x267B;</div>
+                <div class="stat-icon">♻️</div>
                 <div>
                     <strong class="stat-number">0</strong>
                     <small>Bottles diverted</small>
                 </div>
             </div>
             <div class="stat-item">
-                <div class="stat-icon">&#x1F527;</div>
+                <div class="stat-icon">🔧</div>
                 <div>
                     <strong class="stat-number">0</strong>
                     <small>Trained builders</small>
                 </div>
             </div>
             <div class="stat-item">
-                <div class="stat-icon">&#x1F30D;</div>
+                <div class="stat-icon">🌍</div>
                 <div>
                     <strong class="stat-number">0</strong>
                     <small>Communities engaged</small>
                 </div>
             </div>
         </section>
+
         <section class="gallery-grid">
-            <div class="gallery-card">
-                <img src="images/plastic botle house.webp" alt="Plastic bottle house construction">
-            </div>
-            <div class="gallery-card">
-                <img src="images/plastic botle house2.webp" alt="Completed plastic bottle house">
-            </div>
-            <div class="gallery-card">
-                <img src="images/plastic botle house3.jpeg" alt="Community building plastic bottle house">
-            </div>
+            <div class="gallery-card"><img src="images/plastic botle house.webp" alt="Plastic bottle house"></div>
+            <div class="gallery-card"><img src="images/plastic botle house2.webp" alt="Plastic bottle house"></div>
+            <div class="gallery-card"><img src="images/plastic botle house3.jpeg" alt="Community building"></div>
         </section>
-                <section class="features">
+
+        <section class="features">
             <h2>Why Plastic Bottle Housing?</h2>
             <div class="feature-grid">
                 <div class="feature">
-                    <span class="feature-icon">&#x267B;</span>
+                    <span class="feature-icon">♻️</span>
                     <h3>Sustainable</h3>
                     <p>Recycles plastic waste that would otherwise pollute our environment.</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">&#x1F4B0;</span>
+                    <span class="feature-icon">💰</span>
                     <h3>Affordable</h3>
                     <p>Uses locally available materials to reduce construction costs.</p>
                 </div>
                 <div class="feature">
-                    <span class="feature-icon">&#x1F6E1;</span>
+                    <span class="feature-icon">🛡️</span>
                     <h3>Durable</h3>
-                    <p>Houses built with bottles are strong and can withstand harsh weather.</p>
+                    <p>Houses built with bottles are strong and withstand harsh weather.</p>
                 </div>
             </div>
         </section>
+
         <section class="success-teaser">
             <h2>Success Teaser</h2>
             <p>Coming soon: Photos of Juba's first bottle homes</p>
-            <p>Invitation to join waiting list:</p>
             <form class="waitlist-form" id="waitlistForm">
                 <input type="email" name="waitlistEmail" placeholder="Email address" required>
                 <button type="submit" class="cta-button">Join Waiting List</button>
             </form>
         </section>
     </main>
+
     <footer>
         <nav class="footer-nav">
             <ul class="footer-nav-links">
@@ -234,103 +198,119 @@
         </div>
         <p>&copy; 2026 BentiBuild. All rights reserved.</p>
     </footer>
-    <script src="db.js"></script>
-    <script src="auth.js"></script>
+
+    <!-- Auth modal (login / signup tabs) -->
+    <div id="auth-modal" class="auth-modal" aria-hidden="true">
+        <div class="auth-backdrop" data-action="backdrop"></div>
+        <div class="auth-modal-content" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+            <button id="auth-close" class="modal-close" aria-label="Close">×</button>
+            <div class="auth-tab-buttons" role="tablist">
+                <button class="auth-tab active" data-target="login" role="tab" aria-selected="true">Log In</button>
+                <button class="auth-tab" data-target="signup" role="tab" aria-selected="false">Sign Up</button>
+            </div>
+            <div class="auth-frames">
+                <iframe id="auth-login" src="login.html" title="Log In" frameborder="0"></iframe>
+                <iframe id="auth-signup" src="signup.html" title="Sign Up" frameborder="0" class="hidden"></iframe>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Register service worker for offline support
-        if ('serviceWorker' in navigator && 'IndexedDB' in window) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                            .then(reg => console.log('Service Worker registered'))
-            });
-            window.addEventListener('offline', () => {
-                console.log('Offline mode');
-                if (!document.getElementById('offline-banner')) {
-                    const banner = document.createElement('div');
-                    banner.id = 'offline-banner';
-                    banner.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        background: #ff9800;
-                        color: white;
-                        padding: 10px;
-                        text-align: center;
-                        z-index: 999;
-                        font-weight: bold;
-                    `;
-                    banner.textContent = 'You are offline - BentiBuild works offline!';
-                    document.body.insertBefore(banner, document.body.firstChild);
+    // Register service worker for offline support
+    if ('serviceWorker' in navigator && 'IndexedDB' in window) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                        .then(reg => console.log('Service Worker registered'))
+                        .catch(()=>{});
+        });
+        window.addEventListener('offline', () => {
+            if (!document.getElementById('offline-banner')) {
+                const banner = document.createElement('div');
+                banner.id = 'offline-banner';
+                banner.style.cssText = `position: fixed; top: 0; left: 0; right: 0; background: #ff9800; color: white; padding: 10px; text-align: center; z-index: 999; font-weight: bold;`;
+                banner.textContent = 'You are offline - BentiBuild works offline!';
+                document.body.insertBefore(banner, document.body.firstChild);
+            }
+        });
+    }
+
+    // Waitlist form handling
+    document.addEventListener('DOMContentLoaded', function(){
+        var form = document.getElementById('waitlistForm');
+        if(form){
+            form.addEventListener('submit', async function(e){
+                e.preventDefault();
+                try{
+                    var email = form.waitlistEmail.value;
+                    // Simple local acknowledgement (no backend in this repo)
+                    var messageDiv = document.createElement('div');
+                    messageDiv.id = 'waitlist-message';
+                    messageDiv.className = 'success';
+                    messageDiv.textContent = 'Thank you! You have been added to the waiting list.';
+                    var existing = document.getElementById('waitlist-message'); if(existing) existing.remove();
+                    form.parentNode.insertBefore(messageDiv, form.nextSibling);
+                    form.reset();
+                    setTimeout(function(){ var m = document.getElementById('waitlist-message'); if(m) m.remove(); }, 5000);
+                }catch(err){
+                    var messageDiv = document.createElement('div');
+                    messageDiv.id = 'waitlist-message';
+                    messageDiv.className = 'error';
+                    messageDiv.textContent = 'Error saving to waiting list: ' + (err && err.message? err.message : 'unknown');
+                    var existing = document.getElementById('waitlist-message'); if(existing) existing.remove();
+                    form.parentNode.insertBefore(messageDiv, form.nextSibling);
                 }
             });
         }
 
-        // Navigation toggle for mobile
-        const navToggle = document.querySelector('.nav-toggle');
-        const primaryNav = document.getElementById('primary-navigation');
-
-        navToggle.addEventListener('click', () => {
-            const isOpen = primaryNav.classList.contains('open');
-            navToggle.setAttribute('aria-expanded', !isOpen);
-            primaryNav.classList.toggle('open');
-        });
-
-        // Close nav when clicking outside or on a link
-        document.addEventListener('click', (e) => {
-            if (!navToggle.contains(e.target) && !primaryNav.contains(e.target)) {
-                primaryNav.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
+        // Auth modal wiring
+        (function(){
+            var toggle = document.getElementById('auth-toggle');
+            var modal = document.getElementById('auth-modal');
+            var closeBtn = document.getElementById('auth-close');
+            var tabs = Array.prototype.slice.call(document.querySelectorAll('.auth-tab'));
+            var body = document.body;
+            function openModal(){
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden','false');
+                body.classList.add('no-scroll');
+                tabs[0] && tabs[0].focus();
             }
-        });
-
-        // Close nav when a link is clicked
-        primaryNav.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                primaryNav.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
+            function closeModal(){
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden','true');
+                body.classList.remove('no-scroll');
+                if(toggle) toggle.focus();
             }
-        });
-
-        // Handle waitlist form
-        document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            try {
-                // Wait for DB to initialize
-                if (!localDB || !localDB.db) {
-                    alert('Initializing... please try again');
-                    return;
-                }
-
-                const messageDiv = document.createElement('div');
-                messageDiv.id = 'waitlist-message';
-                messageDiv.className = 'success';
-                messageDiv.textContent = 'Thank you! You have been added to the waiting list.';
-
-                const existingMessage = document.getElementById('waitlist-message');
-                if (existingMessage) existingMessage.remove();
-                e.target.parentNode.insertBefore(messageDiv, e.target.nextSibling);
-                
-                e.target.reset();
-
-                // Auto-remove message after 5 seconds
-                setTimeout(() => {
-                    const msg = document.getElementById('waitlist-message');
-                    if (msg) msg.remove();
-                }, 5000);
-            } catch (error) {
-                const messageDiv = document.createElement('div');
-                messageDiv.id = 'waitlist-message';
-                messageDiv.className = 'error';
-                messageDiv.textContent = 'Error saving to waiting list: ' + error.message;
-
-                const existingMessage = document.getElementById('waitlist-message');
-                if (existingMessage) existingMessage.remove();
-                e.target.parentNode.insertBefore(messageDiv, e.target.nextSibling);
+            function switchTab(target){
+                tabs.forEach(function(t){
+                    var is = t.getAttribute('data-target')===target;
+                    t.classList.toggle('active', is);
+                    t.setAttribute('aria-selected', is? 'true' : 'false');
+                });
+                var l = document.getElementById('auth-login');
+                var s = document.getElementById('auth-signup');
+                if(l) l.classList.toggle('hidden', target!=='login');
+                if(s) s.classList.toggle('hidden', target!=='signup');
             }
-        });
+            if(toggle) toggle.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+            if(closeBtn) closeBtn.addEventListener('click', function(){ closeModal(); });
+            var backdrop = document.querySelector('.auth-backdrop');
+            if(backdrop) backdrop.addEventListener('click', function(){ closeModal(); });
+            tabs.forEach(function(t){ t.addEventListener('click', function(){ switchTab(this.getAttribute('data-target')); }); });
+            document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+
+            // Mobile nav toggle
+            var navToggle = document.querySelector('.nav-toggle');
+            var primaryNav = document.getElementById('primary-navigation');
+            if(navToggle && primaryNav){
+                navToggle.addEventListener('click', function(){
+                    var expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    primaryNav.classList.toggle('open');
+                });
+            }
+        })();
+    });
     </script>
-    <script src="script.js"></script>
 </body>
-</html> 
+</html>

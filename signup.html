@@ -7,33 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="brand">
-            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
-            <div class="brand-copy">
-                <span class="brand-name">BentiBuild</span>
-            </div>
-        </a>
-        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
-            <span class="sr-only">Open navigation menu</span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="method.html">The Method</a></li>
-                <li><a href="map.html">Bottle Map</a></li>
-                <li><a href="builders.html">Builders</a></li>
-                <li><a href="sales.html">Bottle Sales</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
     <main>
         <section class="form-container">
             <h1>Sign Up for BentiBuild</h1>
@@ -98,82 +71,35 @@
     <script src="db.js"></script>
     <script src="auth.js"></script>
     <script>
-        // Navigation toggle for mobile
-        const navToggle = document.querySelector('.nav-toggle');
-        const primaryNav = document.getElementById('primary-navigation');
-
-        if (navToggle && primaryNav) {
-            navToggle.addEventListener('click', () => {
-                const isOpen = primaryNav.classList.contains('open');
-                navToggle.setAttribute('aria-expanded', !isOpen);
-                primaryNav.classList.toggle('open');
-            });
-
-            // Close nav when clicking outside or on a link
-            document.addEventListener('click', (e) => {
-                if (!navToggle.contains(e.target) && !primaryNav.contains(e.target)) {
-                    primaryNav.classList.remove('open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-
-        document.getElementById('signupForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('signup-name').value;
-            const email = document.getElementById('signup-email').value;
-            const phone = document.getElementById('signup-phone').value;
-            const password = document.getElementById('signup-password').value;
-            const role = document.getElementById('signup-role').value;
-
-            const messageDiv = document.getElementById('signup-message');
-
-            try {
-                const result = await authManager.signup(name, email, phone, password, role);
-
-                if (result.success) {
-                    messageDiv.className = 'success';
-                    messageDiv.textContent = 'Signup successful! Redirecting...';
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 1500);
-                } else {
+        (function(){
+            var form = document.getElementById('signupForm');
+            if(!form) return;
+            form.addEventListener('submit', async function(e){
+                e.preventDefault();
+                var name = document.getElementById('signup-name').value;
+                var email = document.getElementById('signup-email').value;
+                var phone = document.getElementById('signup-phone').value;
+                var password = document.getElementById('signup-password').value;
+                var role = document.getElementById('signup-role').value;
+                var messageDiv = document.getElementById('signup-message');
+                try{
+                    var result = await authManager.signup(name, email, phone, password, role);
+                    if(result && result.success){
+                        messageDiv.className = 'success';
+                        messageDiv.textContent = 'Signup successful! Redirecting...';
+                        setTimeout(function(){ window.location.href = 'index.html'; }, 1200);
+                    } else {
+                        messageDiv.className = 'error';
+                        messageDiv.textContent = result && result.message ? result.message : 'Signup failed';
+                    }
+                }catch(err){
                     messageDiv.className = 'error';
-                    messageDiv.textContent = result.message;
+                    messageDiv.textContent = 'Error creating account. Please try again.';
+                    console.error(err);
                 }
-            } catch (error) {
-                messageDiv.className = 'error';
-                messageDiv.textContent = 'Error creating account. Please try again.';
-                console.error('Signup error:', error);
-            }
-        });
+            });
+        })();
     </script>
-</body>
-</html>
-      window.location.href = 'index.html';
-    } else {
-      messageDiv.className = 'error';
-      messageDiv.textContent = result.error || 'Signup failed';
-    }
-    // Remove any existing message
-    const existingMessage = document.getElementById('signup-message');
-    if (existingMessage) existingMessage.remove();
-    // Add new message after form
-    const form = document.querySelector('.auth-form');
-    form.parentNode.insertBefore(messageDiv, form.nextSibling);
-  } catch (err) {
-    const messageDiv = document.createElement('div');
-    messageDiv.id = 'signup-message';
-    messageDiv.className = 'error';
-    messageDiv.textContent = 'Connection error: ' + err.message;
-    const existingMessage = document.getElementById('signup-message');
-    if (existingMessage) existingMessage.remove();
-    const form = document.querySelector('.auth-form');
-    form.parentNode.insertBefore(messageDiv, form.nextSibling);
-  }
-}
-</script>
     <script src="script.js"></script>
 </body>
 </html>

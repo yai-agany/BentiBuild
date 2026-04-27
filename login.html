@@ -7,33 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-    <div class="header-inner">
-        <a href="index.html" class="brand">
-            <img src="images/BentiBuild logo.png" alt="BentiBuild Logo" class="logo-image">
-            <div class="brand-copy">
-                <span class="brand-name">BentiBuild</span>
-            </div>
-        </a>
-        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
-            <span class="sr-only">Open navigation menu</span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="method.html">The Method</a></li>
-                <li><a href="map.html">Bottle Map</a></li>
-                <li><a href="builders.html">Builders</a></li>
-                <li><a href="sales.html">Bottle Sales</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
     <main>
         <section class="form-container">
             <h1>Login to BentiBuild</h1>
@@ -79,71 +52,33 @@
     <script src="db.js"></script>
     <script src="auth.js"></script>
     <script>
-        // Navigation toggle for mobile
-        const navToggle = document.querySelector('.nav-toggle');
-        const primaryNav = document.getElementById('primary-navigation');
-
-        if (navToggle && primaryNav) {
-            navToggle.addEventListener('click', () => {
-                const isOpen = primaryNav.classList.contains('open');
-                navToggle.setAttribute('aria-expanded', !isOpen);
-                primaryNav.classList.toggle('open');
-            });
-
-            // Close nav when clicking outside or on a link
-            document.addEventListener('click', (e) => {
-                if (!navToggle.contains(e.target) && !primaryNav.contains(e.target)) {
-                    primaryNav.classList.remove('open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const messageDiv = document.getElementById('login-message');
-
-            try {
-                const result = await authManager.login(email, password);
-
-                if (result.success) {
-                    messageDiv.className = 'success';
-                    messageDiv.textContent = 'Login successful! Redirecting...';
-
-                    const intendedUrl = localStorage.getItem('intendedUrl');
-                    localStorage.removeItem('intendedUrl');
-
-                    setTimeout(() => {
-                        window.location.href = intendedUrl || 'index.html';
-                    }, 1000);
-                } else {
+        (function(){
+            var form = document.getElementById('loginForm');
+            if(!form) return;
+            form.addEventListener('submit', async function(e){
+                e.preventDefault();
+                var email = document.getElementById('login-email').value;
+                var password = document.getElementById('login-password').value;
+                var messageDiv = document.getElementById('login-message');
+                try{
+                    var result = await authManager.login(email, password);
+                    if(result && result.success){
+                        messageDiv.className = 'success';
+                        messageDiv.textContent = 'Login successful! Redirecting...';
+                        var intended = localStorage.getItem('intendedUrl'); localStorage.removeItem('intendedUrl');
+                        setTimeout(function(){ window.location.href = intended || 'index.html'; }, 900);
+                    } else {
+                        messageDiv.className = 'error';
+                        messageDiv.textContent = result && result.message ? result.message : 'Login failed';
+                    }
+                }catch(err){
                     messageDiv.className = 'error';
-                    messageDiv.textContent = result.message;
+                    messageDiv.textContent = 'Login failed. Please try again.';
+                    console.error(err);
                 }
-            } catch (error) {
-                messageDiv.className = 'error';
-                messageDiv.textContent = 'Login failed. Please try again.';
-                console.error('Login error:', error);
-            }
-        });
+            });
+        })();
     </script>
-</body>
-</html>
-    messageDiv.id = 'login-message';
-    messageDiv.className = 'error';
-    messageDiv.textContent = 'Connection error: ' + err.message;
-
-    const existingMessage = document.getElementById('login-message');
-    if (existingMessage) existingMessage.remove();
-
-    const form = document.querySelector('.auth-form');
-    form.parentNode.insertBefore(messageDiv, form.nextSibling);
-  }
-}
-</script>
     <script src="script.js"></script>
 </body>
 </html>
